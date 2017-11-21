@@ -1,51 +1,72 @@
 
 <!-- Website CSS style -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Website Font style -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 <link rel="stylesheet" href="style.css">
 <!-- Google Fonts -->
-<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
-
+<!-- <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'> --> 
 <div class="container">
-  <div class="row main">
-    <div class="main-login main-center">
-      <h2>Sign up</h2>
+        <div class="card card-container">
+          <h2 class='login_title text-center'>Signup</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>  
-
-  <div class="field">
+    <form class="form-signin">
+      <span id="reauth-email" class="reauth-email"></span>
+      <div class = "form">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true %> <br />
+  
+  
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
+    <%= f.email_field :email, autofocus: true %><br />
+  
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %><br />
+  
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
+  
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
+  </div>  
 
-  <div class="actions">
+  <div class="btn btn-lg btn-primary">
     <%= f.submit "Sign up" %>
   </div>
+</div>
 <% end %>
 </div>
 </div>
 </div>
-
+<div class ="log">
 <%= render "users/shared/links" %>
+</div>
+<style type="text/css">
+body
+{
+  background-color: black;
+}
+
+.card-container.card {
+    max-width: 350px;
+    margin-left: 370px;
+    margin-top: 120px;
+    background-color: grey;
+}
+.form-signin 
+.form-signin {
+    direction: ltr;
+    height: 44px;
+    font-size: 16px;
+}
+.form{
+  margin-left: 80px;
+}
+.log{
+  margin-left: 710px;
+  font-size: 20px;
+}
+</style>

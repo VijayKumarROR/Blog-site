@@ -1,16 +1,66 @@
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/plug-ins/9dcbecd42ad/integration/jqueryui/dataTables.jqueryui.css">
+
 <%= form_for :post ,:url => {:action => "search" }, remote: true do |f| %>
     <div class="input-group bmargindiv1 col-md-12"> <span class="input-group-addon text-left">Scan the Title:</span>
        <%= f.text_field :title,:class => "form-control",placeholder:"UserName" %>
     </div>
 <% end %>
 
+<%#= form_tag("/search", remote: true) do %>
+<%#= text_field_tag :email, params[:email] %>
+<%#= submit_tag "Search", :name => nil %>
+<%# end %>
+
 <div class = "action">
 	<% if user_signed_in? %>
 		<%= link_to "Create Post", new_post_path %>
     <% end %> <br />
 
-	<% if current_user %>
-    	<%= link_to "show", :controller => "posts", :action => "show", :id => current_user.id %>
-    <%end%>
+<table id="portal" class="responstable" border="0" width="100%" >
+
+	<thead>
+		<tr>
+			<th>Email</th>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%i = 0%>
+<% @posts.each do |r|%>
+		<tr>
+	<td><%= i+=1 %></td>
+	<td><%= r.user.email %></td>
+	<td><%= r.title %></td>
+	<td><%= r.description %></td>
+	<td><%= link_to "show", post_path(r) %>
+<%end%>
+</tbody>
+</table>
+
+	<%# if current_user %>
+    	<%#= link_to "show", :controller => "posts", :action => "show", :id => current_user.id %>
+    	<%#else%>
+    	<!-- <p>New User</p> -->
+    <%#end%>
  
 </div>
+
+<script type="text/javascript">
+  jQuery.noConflict();
+  (function( $ ) {
+    jQuery(function() {
+      jQuery('#portal').DataTable();
+  });
+  })(jQuery);
+</script>
+
+
+<style type="text/css">
+body
+{
+	background-color: grey;
+}
+</style>

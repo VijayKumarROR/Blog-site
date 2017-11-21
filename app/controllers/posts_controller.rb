@@ -39,17 +39,17 @@ class PostsController < ApplicationController
 
 	def update
 		@post = Post.find(params[:id])
-		if @post.update_attributes(post_params)
-			flash[:notice] = Post has been updated successfully
+		if @post.update(:comments => params[:comments])
+			flash[:notice] = "Post has been updated successfully"
 			redirect_to :controller => "posts", :action => "index"
 		else
 			flash[:error] = "Error while update"
 			render "edit"
 		end
 	end
-
+ 
 private
 	def post_params
-		params.require(:post).permit(:user_id,:title,:description,:comments, {image: []})
+		params.require(:post).permit(:user_id,:title,:description,:comments, {attachment: []})
 	end
 end

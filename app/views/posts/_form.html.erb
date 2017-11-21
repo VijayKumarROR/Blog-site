@@ -6,6 +6,10 @@
 				<%= p.select :user_id, User.order("email ASC").map { |p| [p.email, p.id]} %>
 			</div>
 
+             <div class = "hidden">
+          		<%#= p.hidden_field :user_id , :value => current_user.id %>
+          	</div>
+
 			<div class="form-group">
 				<%= p.label :title %>
 				<%= p.text_field :title, :required => true %>
@@ -17,8 +21,10 @@
 			</div>
 
 			<div class="form-group">
-				<%= p.label :image %>
-				<%= p.file_field :images, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+				 <%= p.label :attachment do %>
+      			 <%= p.file_field :attachment %>
+      			  <%= p.hidden_field :attachment %>
+    			<% end %>
 			</div>
 
 			<div class="form-group">
@@ -39,6 +45,7 @@
 body
 {
 	width: 600px;
+	background-color: grey;
 }
 .form-group
 {
