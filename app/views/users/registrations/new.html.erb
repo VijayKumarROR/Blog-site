@@ -1,7 +1,26 @@
-<h2>Sign up</h2>
+
+<!-- Website CSS style -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Website Font style -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+<link rel="stylesheet" href="style.css">
+<!-- Google Fonts -->
+<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+<div class="container">
+  <div class="row main">
+    <div class="main-login main-center">
+      <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>  
 
   <div class="field">
     <%= f.label :email %><br />
@@ -25,5 +44,8 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+</div>
+</div>
+</div>
 
 <%= render "users/shared/links" %>

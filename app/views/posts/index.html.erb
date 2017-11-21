@@ -1,0 +1,16 @@
+<%= form_for :post ,:url => {:action => "search" }, remote: true do |f| %>
+    <div class="input-group bmargindiv1 col-md-12"> <span class="input-group-addon text-left">Scan the Title:</span>
+       <%= f.text_field :title,:class => "form-control",placeholder:"UserName" %>
+    </div>
+<% end %>
+
+<div class = "action">
+	<% if user_signed_in? %>
+		<%= link_to "Create Post", new_post_path %>
+    <% end %> <br />
+
+	<% if current_user %>
+    	<%= link_to "show", :controller => "posts", :action => "show", :id => current_user.id %>
+    <%end%>
+ 
+</div>

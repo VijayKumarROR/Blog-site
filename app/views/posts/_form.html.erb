@@ -1,0 +1,54 @@
+<div class ="container">
+	<div class = "form">
+		<%= form_for @post, html: {multiple: true} do |p| %>
+			<div class="form-group">
+				<%= p.label :user_id %>	
+				<%= p.select :user_id, User.order("email ASC").map { |p| [p.email, p.id]} %>
+			</div>
+
+			<div class="form-group">
+				<%= p.label :title %>
+				<%= p.text_field :title, :required => true %>
+			</div>
+
+			<div class="form-group">
+				<%= p.label :description %>
+				<%= p.text_area :description, :col => "4", :row => "2" %>
+			</div>
+
+			<div class="form-group">
+				<%= p.label :image %>
+				<%= p.file_field :images, multiple: true, accept: "image/jpeg, image/jpg, image/gif, image/png" %>
+			</div>
+
+			<div class="form-group">
+				<%= p.label :comments %>
+				<%= p.text_field :comments, :required => true %>
+			</div>
+
+			<div class = "btn">
+				<%= p.submit "Save Post" %>
+			</div>
+
+		<% end %>
+	</div>
+</div>
+
+
+<style type="text/css">
+body
+{
+	width: 600px;
+}
+.form-group
+{
+	text-align: center;
+	margin-left: 600px;
+}
+
+.btn 
+{
+	text-align: center;
+	margin-left: 630px;
+}
+</style>
